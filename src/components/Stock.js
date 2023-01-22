@@ -1,12 +1,23 @@
-import React from "react";
 
-function Stock() {
+
+function Stock({ id, ticker, name, type, price, handleClick, handleDeleteClick, isClicked, handleClickFunction }) {
+
+
+  const onCardClick = () => {
+    handleClick(id);
+  }
+
+  const onCardDelete = () => {
+    handleDeleteClick(id);
+  }
+
+
   return (
-    <div>
+    <div onClick={isClicked ? onCardDelete : onCardClick}>
       <div className="card">
         <div className="card-body">
-          <h5 className="card-title">{"Compant Name"}</h5>
-          <p className="card-text">{"Stock Price"}</p>
+          <h5 className="card-title">{name}</h5>
+          <p className="card-text">{ticker}: {price}</p>
         </div>
       </div>
     </div>
